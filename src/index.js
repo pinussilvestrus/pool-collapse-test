@@ -13,11 +13,13 @@ import './styles.css';
 import diagram from './diagram.bpmn';
 
 import variantA from './A';
-import variantB from './B';
+import variantB1 from './B1';
+import variantB2 from './B2';
 
 const VARIANTS = [
   variantA,
-  variantB
+  variantB1,
+  variantB2
 ];
 
 const DEFAULT_VARIANT = VARIANTS[0].key;
@@ -84,6 +86,7 @@ variantsBadge.on('click', onNextVariant);
 
 const variant = urlParam('variant');
 toggleVariant(variant);
+
 
 // helpers //////////
 
