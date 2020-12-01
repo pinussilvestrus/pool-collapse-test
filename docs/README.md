@@ -29,11 +29,15 @@ Show and explain the [prepared diagram](./instructions.md), provide task for par
 
 **Test Session**
 
-Ask the participant to start modeling in the first variant, and move to other variants afterward.
+Ask the participant to [start modeling](https://t0ztc.sse.codesandbox.io/) in the first variant, and move to other variants afterward.
 
 **Outro**
 
 Time for some generic questions (e.g. what should we definitely change/keep), last thoughts and feedback, thanks for participating
+
+### Prototype
+
+Link: https://t0ztc.sse.codesandbox.io/
 
 ### Instructions
 
