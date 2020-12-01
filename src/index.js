@@ -1,7 +1,5 @@
 import Modeler from 'bpmn-js/lib/Modeler';
 
-import DisableCollapsedSubprocessModule from 'bpmn-js-disable-collapsed-subprocess';
-
 import dom from 'domtastic';
 
 import { find, findIndex } from 'min-dash';
@@ -16,23 +14,13 @@ import diagram from './diagram.bpmn';
 
 import variantA from './A';
 import variantB from './B';
-import variantC from './C';
-import variantD from './D';
-import variantE from './E';
 
 const VARIANTS = [
-  {
-    key: '0',
-    modules: [DisableCollapsedSubprocessModule]
-  },
   variantA,
-  variantB,
-  variantC,
-  variantD,
-  variantE
+  variantB
 ];
 
-const DEFAULT_VARIANT = '0';
+const DEFAULT_VARIANT = VARIANTS[0].key;
 
 const container = dom('#container');
 
