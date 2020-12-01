@@ -1,38 +1,34 @@
-import { is } from "bpmn-js/lib/util/ModelUtil";
+import { is } from 'bpmn-js/lib/util/ModelUtil';
 
-import { isExpanded } from "bpmn-js/lib/util/DiUtil";
+import { isExpanded } from 'bpmn-js/lib/util/DiUtil';
 
-var REPLACE_WITH_COLLAPSED = "replace-with-collapsed-pool";
+var REPLACE_WITH_COLLAPSED = 'replace-with-collapsed-pool';
 
 export default function DisabledCollapsePopupProvider(
-  popupMenu,
-  bpmnReplace,
-  translate
+    popupMenu,
+    translate
 ) {
-  popupMenu.registerProvider("bpmn-replace", this);
+  popupMenu.registerProvider('bpmn-replace', this);
 
   this._translate = translate;
-  this._bpmnReplace = bpmnReplace;
 }
 
 DisabledCollapsePopupProvider.$inject = [
-  "popupMenu",
-  "bpmnReplace",
-  "translate"
+  'popupMenu',
+  'translate'
 ];
 
-DisabledCollapsePopupProvider.prototype.getPopupMenuEntries = function (
-  element
+DisabledCollapsePopupProvider.prototype.getPopupMenuEntries = function(
+    element
 ) {
-  var bpmnReplace = this._bpmnReplace,
-    translate = this._translate;
+  var translate = this._translate;
 
-  return function (entries) {
+  return function(entries) {
     if (isParticipant(element) && isExpanded(element) && hasChildren(element)) {
       entries[REPLACE_WITH_COLLAPSED] = {
-        label: translate("Collapsed Pool"),
-        subLabel: translate("not possible, remove content to proceed"),
-        className: "bpmn-icon-lane",
+        label: translate('Collapsed Pool'),
+        subLabel: translate('not possible, remove content to proceed'),
+        className: 'bpmn-icon-lane',
         disabled: true
       };
     }
@@ -44,7 +40,7 @@ DisabledCollapsePopupProvider.prototype.getPopupMenuEntries = function (
 // helper /////////////////
 
 function isParticipant(element) {
-  return is(element, "bpmn:Participant");
+  return is(element, 'bpmn:Participant');
 }
 
 function hasChildren(element) {

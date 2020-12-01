@@ -1,28 +1,28 @@
-import Modeler from "bpmn-js/lib/Modeler";
+import Modeler from 'bpmn-js/lib/Modeler';
 
-import DisableCollapsedSubprocessModule from "bpmn-js-disable-collapsed-subprocess";
+import DisableCollapsedSubprocessModule from 'bpmn-js-disable-collapsed-subprocess';
 
-import dom from "domtastic";
+import dom from 'domtastic';
 
-import { find, findIndex } from "min-dash";
+import { find, findIndex } from 'min-dash';
 
-import "bpmn-js/dist/assets/diagram-js.css";
+import 'bpmn-js/dist/assets/diagram-js.css';
 
-import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
+import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css';
 
-import "./styles.css";
+import './styles.css';
 
-import diagram from "./diagram.bpmn";
+import diagram from './diagram.bpmn';
 
-import variantA from "./A";
-import variantB from "./B";
-import variantC from "./C";
-import variantD from "./D";
-import variantE from "./E";
+import variantA from './A';
+import variantB from './B';
+import variantC from './C';
+import variantD from './D';
+import variantE from './E';
 
 const VARIANTS = [
   {
-    key: "0",
+    key: '0',
     modules: [DisableCollapsedSubprocessModule]
   },
   variantA,
@@ -32,13 +32,13 @@ const VARIANTS = [
   variantE
 ];
 
-const DEFAULT_VARIANT = "0";
+const DEFAULT_VARIANT = '0';
 
-const container = dom("#container");
+const container = dom('#container');
 
-const variantsBadge = dom(".variant-badge");
+const variantsBadge = dom('.variant-badge');
 
-let activeVariant = "";
+let activeVariant = '';
 
 let modeler;
 
@@ -58,9 +58,9 @@ const renderModeler = (modules = []) => {
   modeler
     .importXML(diagram)
     .then(() => {
-      const canvas = modeler.get("canvas");
+      const canvas = modeler.get('canvas');
 
-      canvas.zoom("fit-viewport");
+      canvas.zoom('fit-viewport');
     })
     .catch((err) => console.log(err));
 };
@@ -76,7 +76,7 @@ const toggleVariant = (variant) => {
 
   activeVariant = key;
 
-  variantsBadge.find("span").text(key);
+  variantsBadge.find('span').text(key);
 
   updateURL(variant);
   renderModeler(modules);
@@ -92,19 +92,19 @@ const onNextVariant = () => {
   return toggleVariant(VARIANTS[found + 1].key);
 };
 
-variantsBadge.on("click", onNextVariant);
+variantsBadge.on('click', onNextVariant);
 
-const variant = urlParam("variant");
+const variant = urlParam('variant');
 toggleVariant(variant);
 
 // helpers //////////
 
 function updateURL(variant) {
   const newurl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?variant=${variant}`;
-  window.history.pushState({ path: newurl }, "", newurl);
+  window.history.pushState({ path: newurl }, '', newurl);
 }
 function urlParam(name) {
-  const results = new RegExp("[?&]" + name + "=([^&#]*)").exec(
+  const results = new RegExp('[?&]' + name + '=([^&#]*)').exec(
     window.location.href
   );
   return (results && results[1]) || DEFAULT_VARIANT;

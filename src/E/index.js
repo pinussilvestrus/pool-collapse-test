@@ -1,12 +1,12 @@
-import CollapsePopupProvider from "./CollapsePopupProvider";
+import CollapsePopupProvider from './CollapsePopupProvider';
 
 const module = {
-  __depends__: ["popupMenu", "bpmnReplace"],
-  __init__: ["collapsePopupProvider"],
-  collapsePopupProvider: ["type", CollapsePopupProvider]
+  __depends__: ['popupMenu', 'bpmnReplace'],
+  __init__: ['collapsePopupProvider'],
+  collapsePopupProvider: ['type', CollapsePopupProvider]
 };
 
 export default {
-  key: "E",
+  key: 'E',
   modules: [module]
 };

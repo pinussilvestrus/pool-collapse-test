@@ -1,19 +1,19 @@
-import { is } from "bpmn-js/lib/util/ModelUtil";
+import { is } from 'bpmn-js/lib/util/ModelUtil';
 
-import { isExpanded, isEventSubProcess } from "bpmn-js/lib/util/DiUtil";
+import { isExpanded, isEventSubProcess } from 'bpmn-js/lib/util/DiUtil';
 
-import { assign } from "min-dash";
+import { assign } from 'min-dash';
 
-var REPLACE_WITH_COLLAPSED = "replace-with-collapsed-subprocess",
-  REPLACE_WITH_EXPANDED = "replace-with-expanded-subprocess";
+var REPLACE_WITH_COLLAPSED = 'replace-with-collapsed-subprocess',
+    REPLACE_WITH_EXPANDED = 'replace-with-expanded-subprocess';
 
 export default function DisabledCollapsedSubprocessPopupProvider(
-  popupMenu,
-  bpmnReplace,
-  tooltips,
-  translate
+    popupMenu,
+    bpmnReplace,
+    tooltips,
+    translate
 ) {
-  popupMenu.registerProvider("bpmn-replace", this);
+  popupMenu.registerProvider('bpmn-replace', this);
 
   this._bpmnReplace = bpmnReplace;
   this._tooltips = tooltips;
@@ -21,46 +21,46 @@ export default function DisabledCollapsedSubprocessPopupProvider(
 }
 
 DisabledCollapsedSubprocessPopupProvider.$inject = [
-  "popupMenu",
-  "bpmnReplace",
-  "tooltips",
-  "translate"
+  'popupMenu',
+  'bpmnReplace',
+  'tooltips',
+  'translate'
 ];
 
 /**
  * Get all entries from original bpmn-js provider minus the ones that allow to model
  * collapsed subprocess.
  */
-DisabledCollapsedSubprocessPopupProvider.prototype.getPopupMenuEntries = function (
-  element
+DisabledCollapsedSubprocessPopupProvider.prototype.getPopupMenuEntries = function(
+    element
 ) {
   var bpmnReplace = this._bpmnReplace,
-    tooltips = this._tooltips,
-    translate = this._translate,
-    expandSubProcess = {
-      "expand-subprocess": {
-        className: "bpmn-icon-subprocess-expanded",
-        label: translate("Expand (not reversible)"),
-        action: function () {
-          bpmnReplace.replaceElement(element, {
-            type: "bpmn:SubProcess",
-            isExpanded: true
-          });
+      tooltips = this._tooltips,
+      translate = this._translate,
+      expandSubProcess = {
+        'expand-subprocess': {
+          className: 'bpmn-icon-subprocess-expanded',
+          label: translate('Expand (not reversible)'),
+          action: function() {
+            bpmnReplace.replaceElement(element, {
+              type: 'bpmn:SubProcess',
+              isExpanded: true
+            });
+          }
         }
-      }
-    };
+      };
 
-  return function (entries) {
+  return function(entries) {
     if (isTask(element)) {
       delete entries[REPLACE_WITH_EXPANDED];
       delete entries[REPLACE_WITH_COLLAPSED];
 
-      entries["replace-with-subprocess"] = {
-        className: "bpmn-icon-subprocess-collapsed",
-        label: translate("Sub Process"),
-        action: function () {
+      entries['replace-with-subprocess'] = {
+        className: 'bpmn-icon-subprocess-collapsed',
+        label: translate('Sub Process'),
+        action: function() {
           bpmnReplace.replaceElement(element, {
-            type: "bpmn:SubProcess",
+            type: 'bpmn:SubProcess',
             isExpanded: false
           });
         }
@@ -73,26 +73,26 @@ DisabledCollapsedSubprocessPopupProvider.prototype.getPopupMenuEntries = functio
       delete entries[REPLACE_WITH_COLLAPSED];
 
       entries[REPLACE_WITH_COLLAPSED] = {
-        label: "Sub Process (collapsed)",
-        className: "bpmn-icon-subprocess-collapsed",
+        label: 'Sub Process (collapsed)',
+        className: 'bpmn-icon-subprocess-collapsed',
         disabled: true,
         title: translate(
-          "Collapsed sub processes are not well supported on execution runtime environments."
+          'Collapsed sub processes are not well supported on execution runtime environments.'
         ),
-        action: function (event) {
+        action: function(event) {
           tooltips.add({
             position: {
               x: event.x + 50,
               y: event.y + 50
             },
-            type: "error",
+            type: 'error',
             timeout: 2000,
             html:
-              "<div>" +
+              '<div>' +
               translate(
-                "Collapsed sub processes are not well supported on execution runtime environments."
+                'Collapsed sub processes are not well supported on execution runtime environments.'
               ) +
-              "</div>"
+              '</div>'
           });
         }
       };
@@ -117,13 +117,13 @@ DisabledCollapsedSubprocessPopupProvider.prototype.getPopupMenuEntries = functio
 
 // helper /////
 function isTask(element) {
-  return is(element, "bpmn:Task");
+  return is(element, 'bpmn:Task');
 }
 
 function isSubProcess(element) {
   return (
-    is(element, "bpmn:SubProcess") &&
-    !is(element, "bpmn:Transaction") &&
+    is(element, 'bpmn:SubProcess') &&
+    !is(element, 'bpmn:Transaction') &&
     !isEventSubProcess(element)
   );
 }

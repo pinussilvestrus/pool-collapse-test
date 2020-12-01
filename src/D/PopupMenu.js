@@ -1,10 +1,10 @@
-import inherits from "inherits";
+import inherits from 'inherits';
 
-import PopupMenu from "diagram-js/lib/features/popup-menu/PopupMenu";
+import PopupMenu from 'diagram-js/lib/features/popup-menu/PopupMenu';
 
-import { domify, classes as domClasses, attr as domAttr } from "min-dom";
+import { domify, classes as domClasses, attr as domAttr } from 'min-dom';
 
-var DATA_REF = "data-id";
+var DATA_REF = 'data-id';
 
 export default function CustomPopupMenu(injector) {
   injector.invoke(PopupMenu, this);
@@ -12,7 +12,7 @@ export default function CustomPopupMenu(injector) {
 
 inherits(CustomPopupMenu, PopupMenu);
 
-CustomPopupMenu.$inject = ["injector"];
+CustomPopupMenu.$inject = ['injector'];
 
 /**
  * Creates a single entry and returns it as a DOM container.
@@ -21,14 +21,14 @@ CustomPopupMenu.$inject = ["injector"];
  *
  * @return {Object} a DOM container
  */
-CustomPopupMenu.prototype._createEntry = function (entry, id) {
-  var entryContainer = domify("<div>"),
-    entryClasses = domClasses(entryContainer);
+CustomPopupMenu.prototype._createEntry = function(entry, id) {
+  var entryContainer = domify('<div>'),
+      entryClasses = domClasses(entryContainer);
 
-  entryClasses.add("entry");
+  entryClasses.add('entry');
 
   if (entry.className) {
-    entry.className.split(" ").forEach(function (className) {
+    entry.className.split(' ').forEach(function(className) {
       entryClasses.add(className);
     });
   }
@@ -36,13 +36,13 @@ CustomPopupMenu.prototype._createEntry = function (entry, id) {
   domAttr(entryContainer, DATA_REF, id);
 
   if (entry.label) {
-    var label = domify("<span>");
+    var label = domify('<span>');
     label.textContent = entry.label;
     entryContainer.appendChild(label);
   }
 
   if (entry.subLabel) {
-    var subLabel = domify("<p>");
+    var subLabel = domify('<p>');
     subLabel.textContent = entry.subLabel;
     subLabel.style.margin = 0;
     entryContainer.appendChild(subLabel);
@@ -53,11 +53,11 @@ CustomPopupMenu.prototype._createEntry = function (entry, id) {
   }
 
   if (entry.active === true) {
-    entryClasses.add("active");
+    entryClasses.add('active');
   }
 
   if (entry.disabled === true) {
-    entryClasses.add("disabled");
+    entryClasses.add('disabled');
   }
 
   if (entry.title) {
