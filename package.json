@@ -4,8 +4,8 @@
   "description": "ideation",
   "main": "index.html",
   "scripts": {
-    "start": "webpack serve",
-    "build": "webpack --mode=production",
+    "start": "webpack serve --progress",
+    "build": "webpack --mode=production --progress",
     "lint": "eslint .",
     "all": "run-s lint build"
   },

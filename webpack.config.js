@@ -6,7 +6,8 @@ module.exports = {
   devServer: {
     contentBase: '.',
     compress: true,
-    port: 9000
+    port: 9000,
+    writeToDisk: true
   },
   output: {
     filename: 'main.js',
