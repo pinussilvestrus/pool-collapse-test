@@ -1,7 +1,7 @@
 {
-  "name": "pool-collapsing",
+  "name": "pool-collapse-test",
   "version": "1.0.0",
-  "description": "ideation",
+  "description": "",
   "main": "index.html",
   "scripts": {
     "start": "webpack serve --progress",
