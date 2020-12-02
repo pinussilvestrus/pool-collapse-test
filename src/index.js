@@ -15,11 +15,13 @@ import diagram from './diagram.bpmn';
 import variantA from './A';
 import variantB1 from './B1';
 import variantB2 from './B2';
+import variantB3 from './B3';
 
 const VARIANTS = [
   variantA,
   variantB1,
-  variantB2
+  variantB2,
+  variantB3
 ];
 
 const DEFAULT_VARIANT = VARIANTS[0].key;
