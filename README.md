@@ -9,7 +9,7 @@ $ npm start
 
 ## Docs
 
-The prototype can be found in [this codesandbox](https://t0ztc.sse.codesandbox.io/). Read [the docs](./docs) for more details.
+The prototype can be found in [this codesandbox](https://2yhmr.sse.codesandbox.io/). Read [the docs](./docs) for more details.
 
 ## License
 
