@@ -29,7 +29,7 @@ Show and explain the [prepared diagram](./instructions.md), provide task for par
 
 **Test Session**
 
-Ask the participant to [start modeling](https://t0ztc.sse.codesandbox.io/) in the first variant, and move to other variants afterward.
+Ask the participant to [start modeling](https://2yhmr.sse.codesandbox.io) in the first variant, and move to other variants afterward.
 
 **Outro**
 
@@ -37,7 +37,7 @@ Time for some generic questions (e.g. what should we definitely change/keep), la
 
 ### Prototype
 
-Link: https://t0ztc.sse.codesandbox.io/
+Link: https://2yhmr.sse.codesandbox.io
 
 ### Instructions
 
